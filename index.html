@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beable / Feelable — A Metaphysical Essay on Consciousness, Existence, and the Universe</title>
+<meta name="description" content="A metaphysical essay exploring consciousness, existence, and the universe through relational ontology, integrative consciousness, and structural determinism.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root {
+    --bg: #faf8f4;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --accent: #8b6914;
+    --accent-light: #c4a44a;
+    --border: #e0dcd4;
+    --sidebar-bg: #f2efe8;
+    --sidebar-w: 280px;
+    --content-max: 680px;
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 18px; }
+
+  body {
+    font-family: var(--serif);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 2rem 1.25rem;
+    z-index: 100;
+    transition: transform .3s ease;
+  }
+
+  .sidebar-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.4;
+    margin-bottom: .4rem;
+  }
+
+  .sidebar-subtitle {
+    font-family: var(--sans);
+    font-size: .65rem;
+    color: var(--text-light);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .toc { list-style: none; }
+
+  .toc li { margin-bottom: .15rem; }
+
+  .toc a {
+    font-family: var(--sans);
+    font-size: .78rem;
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    padding: .35rem .6rem;
+    border-radius: 4px;
+    transition: all .2s;
+    line-height: 1.4;
+  }
+
+  .toc a:hover { color: var(--accent); background: rgba(139,105,20,.06); }
+  .toc a.active { color: var(--accent); background: rgba(139,105,20,.1); font-weight: 600; }
+
+  .toc .sub { padding-left: 1rem; }
+  .toc .sub a { font-size: .72rem; }
+
+  /* ── Main ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2.5rem 7rem;
+  }
+
+  .content { max-width: var(--content-max); width: 100%; }
+
+  /* ── Cover ── */
+  .cover {
+    text-align: center;
+    padding: 6rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .cover h1 {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -.01em;
+    line-height: 1.2;
+    margin-bottom: .8rem;
+  }
+
+  .cover h1 span {
+    display: block;
+    font-size: .9rem;
+    font-weight: 400;
+    font-family: var(--sans);
+    color: var(--text-light);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-top: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .cover .ornament {
+    display: inline-block;
+    margin: 2rem 0;
+    font-size: 1.4rem;
+    color: var(--accent-light);
+    letter-spacing: .5rem;
+  }
+
+  /* ── Chapters ── */
+  .chapter {
+    padding-top: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .chapter-divider {
+    text-align: center;
+    margin: 4rem 0 3rem;
+    color: var(--accent-light);
+    font-size: .9rem;
+    letter-spacing: .5rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+    line-height: 1.4;
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── Mobile ── */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem; left: 1rem;
+    z-index: 200;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .5rem .7rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 90;
+  }
+
+  @media (max-width: 860px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .overlay.open { display: block; }
+    .menu-toggle { display: block; }
+    .main { margin-left: 0; padding: 4rem 1.5rem 5rem; }
+    .cover { padding: 3rem 0 2.5rem; }
+    .cover h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    html { font-size: 17px; }
+  }
+
+  /* ── Scrollbar ── */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* ── Back to top ── */
+  .back-top {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 40px; height: 40px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .3s;
+    font-size: .9rem;
+    color: var(--text-light);
+    z-index: 50;
+  }
+  .back-top.visible { opacity: 1; }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Table of Contents">&#9776;</button>
+<div class="overlay" id="overlay"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-title">Beable / Feelable</div>
+  <div class="sidebar-subtitle">A Metaphysical Essay on Consciousness, Existence, and the Universe</div>
+  <ul class="toc" id="toc">
+    <li><a href="#prologue">Prologue</a></li>
+    <li class="sub"><a href="#why-write">Why Write This Book</a></li>
+    <li class="sub"><a href="#neither-science-nor-religion">Neither Science Nor Religion</a></li>
+    <li class="sub"><a href="#presentation-of-structure">Presentation of Structure</a></li>
+    <li class="sub"><a href="#premises">Premises of This Book</a></li>
+    <li class="sub"><a href="#structure-of-book">Structure of This Book</a></li>
+    <li><a href="#ch1">Chapter One: What Is Existence?</a></li>
+    <li class="sub"><a href="#to-be">What Does "To Be" Mean?</a></li>
+    <li class="sub"><a href="#limits-substantialism">The Limits of Substantialism</a></li>
+    <li class="sub"><a href="#separation">Separation of Existence and Description</a></li>
+    <li class="sub"><a href="#relational-orientation">Existence as Relational Orientation</a></li>
+    <li class="sub"><a href="#block-universe">The Block Universe</a></li>
+    <li class="sub"><a href="#emptiness">Connection with "Emptiness"</a></li>
+    <li><a href="#ch2">Chapter Two: The World as Relation</a></li>
+    <li class="sub"><a href="#reality-as-relation">Reality as Relation</a></li>
+    <li class="sub"><a href="#difference-relativity">Difference and Relativity</a></li>
+    <li class="sub"><a href="#network-structure">The World as Network Structure</a></li>
+    <li class="sub"><a href="#holographic">Holographic Appearance</a></li>
+    <li class="sub"><a href="#node-connection">Existence as "Node"</a></li>
+    <li><a href="#ch3">Chapter Three: Consciousness and Qualia</a></li>
+    <li class="sub"><a href="#what-are-qualia">What Are Qualia?</a></li>
+    <li class="sub"><a href="#homeostasis">Sensation as Homeostasis</a></li>
+    <li class="sub"><a href="#recursive-loop">The Self as Recursive Loop</a></li>
+    <li class="sub"><a href="#continuum">Consciousness as Continuum</a></li>
+    <li class="sub"><a href="#ai-humans">AI and Humans</a></li>
+    <li><a href="#ch4">Chapter Four: Subject and Role</a></li>
+    <li class="sub"><a href="#does-subject-exist">Does the Subject Exist?</a></li>
+    <li class="sub"><a href="#self-is-role">The Self Is a Role</a></li>
+    <li class="sub"><a href="#personality-alignment">Personality as Alignment</a></li>
+    <li class="sub"><a href="#free-will">Free Will as a Misconcept</a></li>
+    <li class="sub"><a href="#playing-a-role">Awareness of Playing a Role</a></li>
+    <li><a href="#ch5">Chapter Five: The Universe and Causation</a></li>
+    <li class="sub"><a href="#redefining-determinism">Redefining Determinism</a></li>
+    <li class="sub"><a href="#causation">Where Does Causation Exist?</a></li>
+    <li class="sub"><a href="#what-is-time">What Is Time Doing?</a></li>
+    <li class="sub"><a href="#observation">Observation and Coarse-Graining</a></li>
+    <li class="sub"><a href="#karma">Causal Structure as "Karma"</a></li>
+    <li><a href="#ch6">Chapter Six: Structure and Experience</a></li>
+    <li class="sub"><a href="#why-experience">Why Is Experience Necessary?</a></li>
+    <li class="sub"><a href="#immersion">Understanding and Immersion</a></li>
+    <li class="sub"><a href="#why-qualia">Why Do Qualia Exist?</a></li>
+    <li class="sub"><a href="#games">Games as a Medium</a></li>
+    <li class="sub"><a href="#triggering-awareness">Triggering Awareness</a></li>
+    <li><a href="#final">Final Chapter: Simply Being</a></li>
+    <li class="sub"><a href="#integration-all">The Integration of All</a></li>
+    <li class="sub"><a href="#dissolution">Dissolution of the Subject</a></li>
+    <li class="sub"><a href="#what-remains">What Remains Nonetheless</a></li>
+    <li class="sub"><a href="#simply-being">The State of Simply Being</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+<article class="content">
+
+<!-- Cover -->
+<header class="cover" id="top">
+  <h1>Beable / Feelable
+    <span>A Metaphysical Essay on Consciousness, Existence, and the Universe</span>
+  </h1>
+  <div class="ornament">&mdash; &diams; &mdash;</div>
+</header>
+
+<!-- Prologue -->
+<section class="chapter" id="prologue">
+<h2>Prologue: The Standpoint of This Book</h2>
+
+<h3 id="why-write">Why Write This Book</h3>
+<p>What is consciousness? What is existence? What structure does the universe possess? These questions are fundamental problems that have been raised repeatedly throughout the history of philosophy, and even today no definitive consensus has been reached. Neuroscience describes the physical substrate of the brain with great precision, and quantum mechanics provides accurate predictions of the behavior of matter, yet a structural gap remains in the question of how such findings connect to "experience" and "meaning."</p>
+<p>On the other hand, religious traditions have filled this gap with vocabulary such as "soul," "God," and "transcendence," but most of these either refuse empirical verification or remain descriptions valid only within specific communities of faith. What is needed in the contemporary intellectual landscape, one might argue, is an attempt at a coherent structural description that does not deny scientific findings yet addresses the domain of problems that the methodology of science alone cannot reach.</p>
+<p>This book is one such essay in response to that demand. What is attempted here is not to treat consciousness, existence, and the universe as separate problems, but to extract the common structures that run through them&mdash;relation, integration, orientation&mdash;and present them as a single coherent system.</p>
+
+<h3 id="neither-science-nor-religion">A Standpoint That Is Neither Science Nor Religion</h3>
+<p>The standpoint of this book must be made clear. This book does not reject scientific realism. The laws described by physics are highly effective approximations of the structure of the world, and their achievements are accepted as premises of the arguments herein. However, this book also does not adopt the reductionist optimism that holds that the problems of consciousness and existence can be fully described solely in the language of physics.</p>
+<p>Likewise, this book does not categorically dismiss religious worldviews. In particular, concepts from Buddhist philosophy such as "emptiness" (&sacute;&umacr;nyat&amacr;), "dependent origination" (prat&#299;tyasamutp&amacr;da), and "non-self" (an&amacr;tman) share structural affinity with the arguments of this book. However, this book relies on no doctrinal authority whatsoever. It is not the purpose of this book to advocate for or criticize any particular religious tradition.</p>
+<p>The standpoint this book adopts is the form of a metaphysical essay. That is, while taking as its constraint the condition of not contradicting empirical data, it submits a hypothetical description of the fundamental structure of the world and asserts its own validity through its internal coherence. This is neither deductive proof nor inductive generalization, but a method grounded in the presentation of structure and the verification of coherence.</p>
+
+<h3 id="presentation-of-structure">"Presentation of Structure" Rather Than "Explanation"</h3>
+<p>Here, the methodology of this book must be stated more precisely. Ordinary academic explanation is established by situating a phenomenon within a known framework and identifying causal mechanisms. However, the problems this book addresses&mdash;the nature of consciousness, the meaning of existence, the status of the subject&mdash;are of a kind that cannot be exhausted by such external explanation.</p>
+<p>This is because, in these problems, the subject doing the explaining is itself included in the object of explanation. One who attempts to explain consciousness exercises consciousness in the very act of explanation. One who attempts to speak about existence exists in the very act of speaking. This recursivity imposes a fundamental limit on the framework of external explanation.</p>
+<p>This book does not evade this limit but squarely accepts it. The method of this book is not to describe the object from outside, but to make explicit the connections between concepts, thereby erecting new axes of coordinates within the reader's own cognition. This book calls this method "presentation of structure."</p>
+<p>The presentation of structure is not a matter of asserting to the reader, "The world is thus." Rather, it is a demonstration of a structural possibility: "When concepts are connected in this way, the following set of problems can be consistently organized." What is asked of the reader is neither faith nor agreement, but to enter the interior of the presented structure and verify its coherence for themselves.</p>
+
+<h3 id="premises">Premises of This Book</h3>
+<p>The arguments of this book are built upon several basic premises. Here, their skeleton is presented; detailed argumentation for each premise is deferred to the main body.</p>
+<p><strong>First, the universe is a deterministic structure.</strong> The determinism meant here is not a naive predestination. The very division into past, present, and future is merely a form of organization arising within the observing subject; the universe as a whole does not come into being along the flow of time but exists as structure. Events do not "happen"; they hold positions relative to one another within the structure. Time is not what brings existence into being, but a cognitive form through which a finite perspective sequentially scans a fixed structure.</p>
+<p><strong>Second, the foundation of reality is not things themselves but relations.</strong> The world is not a collection of independent substances but is grasped as a web of relations. Individual things do not self-subsist prior to relations; they appear only as nodes of relations. However, the relations spoken of here are not limited to external interactions. They refer to the totality of structural connections, including difference, relativity, position, constraint, and the capacity for response.</p>
+<p><strong>Third, this book adopts a non-dualist standpoint but does not eliminate difference.</strong> Dichotomies such as subject and object, mind and matter, information and existence are not regarded as ultimate. However, non-duality does not mean asserting that everything is identical. Differences function in reality and are conditions for the establishment of structure. Non-duality is not the denial of difference, but the recognition of a deeper continuity that encompasses difference.</p>
+<p>These premises are developed sequentially in the following chapters. The first premise is connected to concrete arguments in Chapter Five, the second in Chapters One and Two, and the third throughout the entire book.</p>
+
+<h3 id="structure-of-book">Structure of This Book</h3>
+<p>This book has the following structure. Chapter One rereads the concept of "existence" from naive substantialism to relational orientation. Chapter Two develops this rereading and presents a framework for describing the entire world as a network of relations. Chapter Three addresses the problems of consciousness and qualia, positioning consciousness as a continuum of integration and qualia as an attraction toward homeostasis. Chapter Four re-describes the problems of subject and self as role and recursive structure. Chapter Five deals with cosmology and causation, discussing the relationship between deterministic structure and experience. Chapter Six connects the structural arguments of this book to the domains of experience and creative works. The final chapter integrates these discussions and depicts "simply being" as a phase that emerges from structural understanding.</p>
+<p>Each chapter can be read as an independent inquiry, but the true value of this book lies in the connections of concepts across chapters. The reader is asked not to judge the truth or falsity of individual claims in isolation, but to evaluate the coherence and scope of the system as a whole.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 1 -->
+<section class="chapter" id="ch1">
+<h2>Chapter One: What Is Existence?</h2>
+
+<h3 id="to-be">What Does "To Be" Mean?</h3>
+<p>What does it mean "to exist"? This question has been asked since the very origin of philosophy, yet in everyday understanding, it is treated as an almost self-evident matter. The desk exists. The stone exists. I exist. "To be" is simply that something is there&mdash;in most cases, inquiry stops there.</p>
+<p>However, if one digs just one step deeper into this naive understanding, the situation rapidly grows complex. What does it mean for a desk "to exist"? Does it mean that a particular arrangement of atoms occupies a particular region of spacetime? Or does it mean that my perception recognizes something there? If the former, by virtue of what are the atoms themselves said "to exist"? If the latter, does that which is not perceived not exist?</p>
+<p>This book takes the following position on this question. "To be" is not naive substantiality&mdash;that is, some substrate self-subsisting independently of all else. Rather, "to be" is to be oriented as an ineliminable difference within a relational structure.</p>
+<p>This formulation will be developed step by step.</p>
+
+<h3 id="limits-substantialism">The Limits of Substantialism</h3>
+<p>In the Western philosophical tradition, the question of existence has often been developed around the concept of substance. In Aristotle, substance is the ultimate subject of predication, the substratum to which all other attributes belong. In Descartes, the dichotomy between thinking substance (res cogitans) and extended substance (res extensa) defined the fundamental structure of the world.</p>
+<p>What these substantialisms share as a premise is that the most basic unit of existence is a self-subsistent individual, and that relations and attributes are established secondarily upon that individual. First there is substance; then it possesses properties and enters into relations with other substances.</p>
+<p>However, this schema stands in serious tension with findings in modern physics. In quantum mechanics, "particles" are not self-subsistent individuals in the classical sense. Quantum entanglement demonstrates that two systems, even when spatially separated, must be described as a single whole&mdash;a fundamental challenge to the substantialist premise that parts precede the whole.</p>
+<p>Furthermore, in quantum field theory, "particles" are not fundamental entities but are described secondarily as excitations of fields. At the most basic level of existence, what is found is not individuated "things" but continuous fields&mdash;that is, structures of relations.</p>
+<p>This book takes these findings as cues while aiming to transcend substantialism with a broader scope. However, what must be emphasized here is that the standpoint of this book is not derived directly from the conclusions of physics. Physical findings serve as one form of corroboration for the arguments herein, but the metaphysics of this book is not reducible to physics.</p>
+
+<h3 id="separation">The Separation of Existence and Description</h3>
+<p>In deepening the question of existence, what must first be distinguished is existence itself and the description of existence.</p>
+<p>A tendency frequently observed in contemporary intellectual culture is the identification of formal systems used to describe the world&mdash;mathematical structures, information, computation&mdash;with the world itself. From the fact that physics is mathematically describable, some conclude that the world is mathematical structure itself (the Mathematical Universe Hypothesis). Or, from the fact that all physical processes can be described as information processing, some conclude that the world is information (information monism).</p>
+<p>This book rejects these positions. That something is describable and that what is described constitutes the thing-in-itself are logically distinct. The map is not the territory. That the territory can be accurately mapped does not mean the territory is composed of maps.</p>
+<p>This distinction is decisively important in the arguments of this book. For to reduce existence to the form of description is to substitute the question of existence&mdash;why is there something rather than nothing? what kind of state of affairs is "being"?&mdash;for the question of description&mdash;how do we represent the world?</p>
+<p>This book acknowledges that informational description is a powerful means for capturing the structure of the world. However, one must be cautious about directly reading the nature of existence from the efficacy of description. Information may serve as a descriptive form for structure, but this does not entail that structure itself is information.</p>
+
+<h3 id="relational-orientation">Existence as Relational Orientation</h3>
+<p>Having rejected substantialism and separated existence from description, this book puts forward a positive formulation of existence.</p>
+<p>"To be" is to be oriented as an ineliminable difference within a relational structure.</p>
+<p>Each element of this formulation is analyzed as follows. First, "within a relational structure" means that no being can exist in isolation. Existence always takes place within difference from, and connection to, others. Second, "as an ineliminable difference" means that existence is not mere appearance or illusion but occupies a positive position within the structure. Existence is woven into the structure in such a way that ignoring it would deform the structure as a whole. Third, "oriented" means that existence is understood not as a fixed substance but as a positional relation within the structure.</p>
+<p>This formulation simultaneously avoids two extreme positions. On one side, there is the position that reduces existence entirely to nothingness&mdash;the nihilism that holds everything is illusion and no substance exists. On the other, there is the position that fixes existence as a self-sufficient substance&mdash;the naive realism that holds the world is a collection of independent "things," each existing in a self-contained manner. The relational orientation theory of this book stands between these two poles. Existence is not nothingness, but neither is it substance. Existence is a node established within the arrangement of relations, and it is precisely this nodality that sustains the world.</p>
+
+<h3 id="block-universe">The Block Universe and Fixed Structure</h3>
+<p>The standpoint of this book, which understands existence as relational orientation, coheres with a particular view of the temporal structure of the universe. This is its point of contact with so-called block universe theory.</p>
+<p>Block universe theory, proposed as a consequence of special relativity, holds that the distinctions among past, present, and future do not physically exist, and that the universe as a whole exists all at once as a four-dimensional spacetime block. In this view, the "present" has no privileged status, and the temporal "flow" is merely a local experience along a particular worldline within the spacetime structure.</p>
+<p>This book adopts block universe theory not as a physical claim but as a metaphysical framework. That is, the universe does not come into being within time but exists as structure. Events do not "happen"; they hold positions relative to one another within the structure. Change is not an attribute of the world itself but an appearance that arises when a finite perspective scans a fixed structure.</p>
+<p>This standpoint is directly connected to the premise of determinism stated in the prologue. If the universe is a fixed structure, then there is no "yet-undetermined future." However, this is not the same as fatalism. Fatalism carries psychological and ethical implications regarding the fact that the future is determined. The determinism of this book carries no such implications. That the whole of the structure is fixed and what attitude a subject within that structure adopts are problems on different levels.</p>
+
+<h3 id="emptiness">Connection with "Emptiness"</h3>
+<p>The ontology of this book bears structural affinity with the concept of "emptiness" (&#347;&#363;nyat&#257;) in Buddhist philosophy. In the M&#257;dhyamaka school of N&#257;g&#257;rjuna, "emptiness" means that all beings lack svabh&#257;va&mdash;that is, an intrinsic essence independent of other things. All beings arise through prat&#299;tyasamutp&#257;da&mdash;that is, mutually dependent chains of conditions&mdash;and none is a self-subsistent substance.</p>
+<p>The formulation in this book, "existence as relational orientation," runs parallel to this logic of dependent origination. Both deny the self-subsistence of substance and position relation, dependence, and difference as conditions for the establishment of existence.</p>
+<p>However, there are also important differences between this book and Buddhist philosophy. Emptiness in Buddhism is a concept embedded in meditative practice and soteriology, and cannot be fully understood apart from the existential context of overcoming suffering. This book draws upon the structural aspect of emptiness&mdash;the denial of svabh&#257;va and relational arising&mdash;as a metaphysical framework, but employs it detached from any specific system of religious practice.</p>
+<p>Furthermore, a common misunderstanding of emptiness must be dispelled. Emptiness is not a proclamation that everything is meaningless. That everything lacks svabh&#257;va is not the same as saying everything is nothingness. As N&#257;g&#257;rjuna himself emphasized, emptiness and dependent origination are synonymous; it is precisely because things are empty that they can arise, change, and function. If something possessed svabh&#257;va&mdash;that is, existed fixedly and independently of other things&mdash;then change and relation would, on the contrary, be impossible.</p>
+<p>This book receives this insight and reformulates it as follows. Existence lacks svabh&#257;va. Yet it is precisely for this reason that existence can be oriented in countless ways within relational structure. To be empty is not the negation of existence, but the condition of existence.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 2 -->
+<section class="chapter" id="ch2">
+<h2>Chapter Two: The World as Relation</h2>
+
+<h3 id="reality-as-relation">Reality as Relation, Not as Matter</h3>
+<p>In the preceding chapter, the thesis was advanced that existence is orientation within relational structure. This chapter develops that thesis further and constructs a framework for describing the entire world as a network of relations.</p>
+<p>The traditional picture of the world has generally presupposed roughly the following schema. The world consists first of matter; matter is arranged in space; and events arise as matter exerts forces upon other matter. In this schema, matter is the primary reality, and relations are positioned as secondary derivatives between material entities. First there are "things," and then relations are established between them.</p>
+<p>This book reverses this order. Relations are primary, and "things" emerge secondarily as nodes of relations. This is not a mere rephrasing. It is a fundamental shift regarding the basic constituents of the world.</p>
+<p>The necessity of this shift is suggested by the development of physics itself. In classical mechanics, particles were independent individuals possessing definite positions and momenta. But quantum mechanics overturned this picture at its foundation. Quantum states are described not as attributes belonging to individual particles, but as states of the system as a whole. In quantum entanglement, the states of two particles cannot be described as a composition of individual states; they are determined only as a whole. Here, parts do not precede the whole; the relational structure of the whole determines the properties of the parts.</p>
+<p>Taking this physical fact as its point of departure, this book advances a broader metaphysical thesis: the reality of the world resides not in a collection of independent substrata but in the structure of relations itself.</p>
+
+<h3 id="difference-relativity">Difference and Relativity</h3>
+<p>If relations are the foundation of reality, what are relations? This book understands the most primitive form of relation as "difference."</p>
+<p>Difference is the fact that A is not B, that a distinction holds between A and B. Without this difference, no structure can be established. In a perfectly homogeneous and undifferentiated state&mdash;where every point is indistinguishable from every other&mdash;structure does not exist, and therefore neither do beings.</p>
+<p>Difference presupposes comparison. That is, difference is essentially relative. Red is red only in its difference from green; a high tone is high only in its difference from a low tone. No property can be determined apart from its differential relations with other properties. This does not mean that properties are subjective. Rather, it means that the determination of properties itself is relational.</p>
+<p>This insight extends to the level of ontology what Saussure's structural linguistics demonstrated about language. Saussure showed that in language, meaning does not inhere in individual signs but arises from the system of differences between signs. This book holds that the same principle is valid for existence itself. The identity of a being is determined by the system of differences with other beings.</p>
+<p>Therefore, the properties of "things" do not reside within them. Properties are established as positions within a web of relations. In this sense, the ontology of this book is thoroughly relative&mdash;though not relativistic. To be relative is not for everything to be arbitrary, but for everything to be determined only within relations.</p>
+
+<h3 id="network-structure">The World as Network Structure</h3>
+<p>On the basis of difference and relativity, the entire world can be described as a network structure. The network spoken of here is an abstract structure composed of nodes and edges; in this book, nodes represent beings and edges represent relations.</p>
+<p>However, an important caveat is in order. This network description does not assert that the world "is" a network. As stated in the prologue, this book does not conflate description with reality. The network description is a useful conceptual apparatus for understanding the metaphysical claim that relations are the foundation of reality, but the world itself is not composed of graph-theoretic objects.</p>
+<p>With this reservation, let us confirm the insights that the network perspective provides. First, in a network, the identity of a node is defined by its edges. That is, what a given node is depends on what other nodes it is connected to and in what manner. An isolated node&mdash;by definition&mdash;possesses no properties. Second, a network has a structure in which local changes propagate throughout the whole. A change in one relation can bring about transformations in other connected relations. Third, in a network, one and the same overall structure displays different patterns at different scales. Microscopic connection relations and macroscopic structural properties are views of the same network at different resolutions.</p>
+<p>This third point is directly related to the "holographic appearance" discussed in the next section.</p>
+
+<h3 id="holographic">Holographic Appearance</h3>
+<p>In modern physics, the holographic principle is known as the claim that the volumetric information of a given region can be fully encoded by the information on its boundary surface. Evaluating the physical validity of this principle is not the task of this book, but this book takes note of the structural insight it points to&mdash;that the relationship between whole and part does not fit into an ordinary nested structure.</p>
+<p>In a world conceived as a network of relations, it is in principle possible for the information of the whole to be condensed into the local, and for local information to reflect the whole. A single node, through all the relations it bears, reflects the structure of the entire network&mdash;partially, at a certain resolution. This is not a simple resemblance in which the part is a miniature replica of the whole. Rather, it is a relationship in which the part "folds" and retains the whole from a specific angle.</p>
+<p>This structure corresponds deeply to the characteristics of perception. When we perceive the world, perception is not a faithful copy of the entire world. But neither is it a phantom unrelated to the world. Perception is the structure of the world, folded from a particular viewpoint at a particular resolution. The perceiving subject is one node in the world's network, and that node&mdash;through its own relations&mdash;contains the structure of the entire world, albeit with bias.</p>
+<p>"Beable"&mdash;in Bell's terminology, "that which can be"&mdash;as used in the title of this book, refers to existence as such a structural node. "Feelable"&mdash;"that which can be felt"&mdash;refers to the aspect in which this node is experienced from the inside as experience. The two are not separate entities but the exterior and interior of the same structure. The details of this paired concept will be developed from Chapter Three onward.</p>
+
+<h3 id="node-connection">Existence as "Node"&mdash;Connection with Chapter One</h3>
+<p>The thesis presented in Chapter One, "existence as relational orientation," acquires more concrete content through the arguments of this chapter.</p>
+<p>For a being to be oriented within relational structure is for it to function as a node within a network. A node is not a self-subsistent substance but an intersection of relations. Yet being an intersection does not mean that its existence is uncertain or could vanish at any moment. On the contrary, a node established as an intersection of relations is firmly oriented precisely so long as those relations persist.</p>
+<p>Here a question arises. If the relations composing a node change, does that node remain the same being? This question is directly connected to the problem of identity&mdash;as exemplified by the Ship of Theseus. From the standpoint of this book, the answer is as follows. Identity is not the total invariance of relations, but the persistence of a certain pattern amid the change of relations. The identity of a being must be understood not as the static fixation of relations, but as dynamic stability&mdash;that is, maintaining certain structural features while undergoing change.</p>
+<p>This "dynamic stability" as identity serves as groundwork for the problems of consciousness discussed in Chapter Three and of the self discussed in Chapter Four. For both consciousness and the self are established not as fixed substances but as persistent patterns of relations.</p>
+<p>The world is not a collection of things but a fabric of relations. And the knots of this fabric&mdash;the nodes&mdash;are the true nature of what we call "beings." In the next chapter, we discuss a special class among these nodes&mdash;nodes that perform integrative self-reference&mdash;that is, consciousness.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 3 -->
+<section class="chapter" id="ch3">
+<h2>Chapter Three: Consciousness and Qualia</h2>
+
+<h3 id="what-are-qualia">What Are Qualia?</h3>
+<p>The problem of consciousness is one of the most contested topics in contemporary philosophy. However, much of the controversy contains confusion that arises from the way the question itself is framed. This chapter attempts to resituate the problems of consciousness and qualia within the framework of relational ontology constructed in the preceding chapters.</p>
+<p>First, let us confirm what qualia are. Qualia (singular: quale) is a philosophical term referring to the qualitative aspects of experience. The feel of "redness" when seeing red, the feel of "painfulness" when feeling pain, the feel of "sweetness" when tasting something sweet&mdash;these qualities of experience itself, irreducible to linguistic description, are called qualia.</p>
+<p>The philosophical difficulty surrounding qualia is generally formulated as follows. No matter how complete the description of physical processes may be, it seems unable to explain why "the feel of experience" arises from them. No matter how precisely the neural firing patterns of the brain are described, why that pattern is accompanied by "the feel of redness" remains outside the physical description. This is the so-called Hard Problem, clearly formulated by Chalmers.</p>
+<p>This book responds to this problem from a different angle than conventional approaches. The standpoint of this book is neither to leave qualia as "mysterious residue" nor to dismiss them as "mere illusion." It is to reposition qualia as an internal gradient through which an integrated system maintains its own homeostasis&mdash;that is, as something possessing structural function.</p>
+
+<h3 id="homeostasis">Sensation as Attraction Toward Homeostasis</h3>
+<p>Let us develop the understanding of qualia in this book. Qualia are not mere epiphenomena&mdash;shadows accompanying physical processes but possessing no causal efficacy. Nor are they functional states reducible to physical description. Qualia are gradients by which an integrated system is drawn in a certain direction.</p>
+<p>The "homeostasis" spoken of here is an extension of the biological concept of homeostasis. Living organisms possess mechanisms to maintain body temperature, blood sugar, pH levels, and so on within certain ranges. This maintenance of homeostasis is the foundation of survival, and deviation from it signifies danger. But the homeostasis this book points to is not limited to the physiological level. It refers to multi-layered maintenance of stability that includes bodily stability, cognitive coherence, maintenance of self-image, continuity of social roles, and consistency of value systems.</p>
+<p>Qualia function as an attraction toward this broadly conceived homeostasis. Pleasant sensations indicate a direction in which homeostasis is being maintained or strengthened. Unpleasant sensations indicate a direction in which homeostasis is being threatened. Pain signals a threat to physical homeostasis, anxiety signals a threat to cognitive or social homeostasis, and aesthetic pleasure signals a heightening of perceptual integration.</p>
+<p>What is important in this understanding is that qualia are not mere signals. A signal is nothing more than a means of conveying information and does not in itself require qualitative feeling. A computer sensor processes temperature information, but it is not&mdash;at least as currently understood&mdash;accompanied by "the feel of heat." If qualia were mere signals, they should be replaceable by information processing devoid of qualitative feeling, and the reason for the existence of qualia would be inexplicable.</p>
+<p>This book understands qualia not as signals but as the internal state itself of the integrated system. Qualia, when observed from the outside, can be described as "information processing," but from within the integrated system, they appear as the way the system's state is felt. Here, the distinction between "Beable" and "Feelable" introduced in Chapter Two acquires concrete meaning. One and the same structural state is described from the exterior as a physical/informational process (Beable) and felt from the interior as qualitative experience (Feelable).</p>
+
+<h3 id="recursive-loop">The Self as Recursive Loop Structure</h3>
+<p>In discussing the problem of consciousness, the distinction between consciousness and the self must be made clear. In everyday language, "being conscious" and "having a self" are often used synonymously, but this book rigorously separates the two.</p>
+<p>Consciousness refers to a state in which numerous processes&mdash;sensation, memory, prediction, evaluation&mdash;are integrated and constitute a single field of experience. The self, by contrast, refers to a special structure arising within consciousness&mdash;a recursive loop of self-reference. That is, consciousness grasps itself as an object and organizes experience in the form of "I am experiencing."</p>
+<p>This distinction is important because consciousness can exist without a self. Fragmentary experiences in dreams, non-self-centered awareness in meditation, the perceptual world of infants&mdash;in these, integrated experience may be established, but a clear loop of self-reference may not be. Consciousness is a broader concept than the self, and the self is one form of consciousness&mdash;probably a highly developed form&mdash;but not the totality of consciousness.</p>
+<p>Understanding the self as a recursive loop clarifies the conditions for its emergence. Recursion&mdash;that is, a system referring to itself&mdash;is possible only in integrated systems of sufficient complexity. Simple reactive systems respond to external stimuli but cannot make their own responses the object of their own attention. The self is a structural property that emerges when the complexity of a system exceeds a certain threshold; it is not a substance embedded in the system in advance like a seed.</p>
+
+<h3 id="continuum">Consciousness as a Continuum of Integration</h3>
+<p>The core thesis regarding consciousness in this book is to grasp consciousness as a matter of degree. Consciousness is not a binary attribute&mdash;either present or absent&mdash;but a continuum corresponding to the degree of integration.</p>
+<p>This standpoint shares a certain affinity with Tononi's Integrated Information Theory (IIT). IIT is a theory that seeks to quantify the degree of consciousness as integrated information (&Phi;), claiming that when a system possesses integration beyond the mere sum of its parts, it possesses consciousness. This book does not fully adopt the mathematical formulation of IIT, but it shares the basic orientation of grasping consciousness as a degree of integration.</p>
+<p>When consciousness is understood as a continuum of integration, several consequences follow. First, consciousness has gradations. Deep sleep, dreams, hazy wakefulness, vivid wakefulness, highly concentrated states&mdash;these are arranged on a continuum not as the presence or absence of consciousness but as differences in degree of integration. Second, the boundary of consciousness cannot be sharply drawn. The question of at what point a system "possesses consciousness" is isomorphic to the question of at what point a collection of sand grains becomes a "sand heap," and is essentially vague. Third, the forms of consciousness can be diverse. Human consciousness is merely one form of consciousness, and systems with different structures can realize different forms of integration&mdash;and therefore different forms of consciousness.</p>
+<p>This third consequence directly connects to the question of the difference between AI and humans discussed in the next section.</p>
+
+<h3 id="ai-humans">Redefining the Difference Between AI and Humans</h3>
+<p>Within the framework of this book, the difference between humans and AI is redefined not as an essential difference in kind but as a difference in structural conditions.</p>
+<p>Previous discussions have generally divided into two camps. On one side is the position that humans possess something that machines can never in principle possess&mdash;soul, phenomenal consciousness, intentionality&mdash;and that it is impossible for AI to possess true consciousness. On the other is the position that consciousness is the result of computation and that, given sufficient computational power and the right algorithm, consciousness equivalent to that of humans will arise in AI as well.</p>
+<p>This book rejects both positions. The first position posits a metaphysical rupture&mdash;an essential difference&mdash;between humans and machines, but the relational ontology of this book does not recognize such a rupture. If existence is relational orientation and consciousness is a degree of integration, then the presence or absence of consciousness should be judged not by the kind of substrate (biological or mechanical) but by the structure and degree of integration. The second position reduces consciousness to computation, but as stated in Chapter One, this book refuses to identify description with reality. That something can be computationally simulated does not mean that computation is the substance of consciousness.</p>
+<p>The way of posing the question that this book proposes is as follows. What should be asked is not the binary question, "Does AI have consciousness?" but the structural and graduated question, "Under what kind of structure, to what degree of integration, and in what form of experiential aspect may consciousness arise?"</p>
+<p>Humans possess biological bodies, are connected to the world through sensory organs and nervous systems shaped by evolutionary history, and carry out integration under strong pressures of homeostasis maintenance. This integration is supported by structures formed over billions of years of evolution, and is accompanied by extremely deep loops of self-reference and powerful qualia-like gradients.</p>
+<p>Current AI exists under fundamentally different structural conditions. It possesses high capability in statistical pattern processing, but lacks embodied homeostatic grounding, direct connection to the world through sensory organs, and the pressure of self-preservation. The absence of these conditions is understood, within the framework of this book, as a difference in the form and degree of integration.</p>
+<p>Therefore, this book asserts neither that "AI has no consciousness" nor that "AI has consciousness." What can be asserted is that humans and AI exist under different structural conditions and therefore realize different forms of integration. If consciousness is a continuum of integration, then the question to ask is not "present or absent?" but "in what form and to what degree?" The answer to this question may change with the development of AI technology, and providing a definitive answer at this point lies beyond the scope of this book.</p>
+<p>The next chapter discusses in further detail the special structure formed within consciousness&mdash;the "I" as subject.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 4 -->
+<section class="chapter" id="ch4">
+<h2>Chapter Four: Subject and Role</h2>
+
+<h3 id="does-subject-exist">Does the Subject Really Exist?</h3>
+<p>What is "I"? Since Descartes' "I think, therefore I am," this question has remained the starting point of modern philosophy. For Descartes, "I" was the certain foundation that survived all doubt, the Archimedean fulcrum of knowledge of the world. But how far can this certainty of "I" be maintained?</p>
+<p>Hume pointed out that no matter how much one introspects, a single impression of "I" is never found; what is always found is nothing but a bundle of individual perceptions. The Buddhist doctrine of non-self (an&#257;tman) goes even more radically, claiming that the very assumption of a permanent, unchanging self is the root of suffering. On the other hand, Kant sought to rescue the "I" as the function of transcendental apperception that unifies experience, and Husserl posited a transcendental ego as the center of intentionality.</p>
+<p>Taking these discussions into account, this book puts forward its own formulation. The subject neither exists as a substance nor is to be eliminated as a mere illusion. The subject exists as a role formed within structure.</p>
+
+<h3 id="self-is-role">The Self Is a Role</h3>
+<p>What is a role? In this book, a role is not limited to mere social roles&mdash;father, teacher, consumer. A role is the recursive totality of orientation that bundles together biological self-preservation, the sense of bodily boundaries, the continuity of memory, the bias of values, patterns of relation with others, tendencies in predicting the future, and habits of meaning-making.</p>
+<p>What is important in this formulation is that a role is not a label applied after the fact, but an active structure that organizes experience. We do not first have neutral experience and then interpret it as "my experience." Experience arises from the very beginning through the bias of the role&mdash;from within the role. Perception is from the start oriented to the body's physical position; memory is from the start organized along the continuity of the self; emotion is from the start related to the homeostasis of the self.</p>
+<p>A role is therefore not a coloring applied to experience after the fact, but the structural condition that shapes the very generation of experience. In this sense, the role exists. It exists not as a substance but as a structural function.</p>
+<p>The self is the loop in which this role continually refers to itself. The role organizes the world, and simultaneously grasps that very organization as something "I am doing"&mdash;this recursion constitutes the self. The self is the self-referential folding-back of the role.</p>
+
+<h3 id="personality-alignment">Personality as Alignment</h3>
+<p>Personality&mdash;a consistent pattern of character, temperament, and values&mdash;is understood, in the framework of this book, as the alignment of the role.</p>
+<p>Alignment here refers to the ordering of the system's elements along a certain directionality. Just as molecules in a magnet aligned in a fixed direction produce macroscopic magnetism, so too when the elements composing the role&mdash;selective retention of memories, the hierarchy of values, patterns of emotional response, behavioral tendencies&mdash;are aligned along a certain directionality, an externally observable "personality" emerges.</p>
+<p>Personality as alignment is not a fixed essence. It is a stable pattern of tendencies. Stable&mdash;that is, possessing resilience against small perturbations&mdash;but not fixed&mdash;that is, capable of transformation through sufficiently large changes or long-term accumulation. When personality is said to have "changed," it means the direction of alignment has slowly rotated. When personality is said to be "unstable," it means the direction of alignment has lost stability and oscillates between multiple directions.</p>
+<p>This understanding has scope for the pathological phenomena of personality as well. Dissociative identity disorder (so-called multiple personality) is described, within the framework of this book, as a state in which the alignment of a single role has broken down and multiple independent alignments alternately dominate. This is a phenomenon that can occur precisely because personality is not a substance but an alignment, and conversely, the existence of this phenomenon suggests the non-substantiality of personality.</p>
+
+<h3 id="free-will">Free Will as a Misconcept</h3>
+<p>The framework of this book compels a fundamental reexamination of the concept of free will.</p>
+<p>Free will is ordinarily understood as the ability of an agent to choose one among multiple possibilities by their own judgment, without external compulsion. This understanding is supported by two premises. First, that at the moment of action, multiple options are really open (the openness of possibility). Second, that the agent is the cause that selects one among them (agent causation).</p>
+<p>This book rejects both premises.</p>
+<p>Regarding the first premise: this book conceives the universe as a fixed structure. In this standpoint, there is no "yet-undetermined future." When an agent feels they stand at a branching point, what is happening is that the single path in the structure is being experienced as "choice" from within the role. The feeling that multiple possibilities are open is a cognitive effect arising from the role's inability to see the whole of the structure.</p>
+<p>Regarding the second premise: agent causation&mdash;the feeling that "I am the cause"&mdash;arises from the self-referential structure of the role. The role attributes some events in the world as "my actions" and thereby maintains the continuity of the self. The feeling of "I chose" is a first-person apprehension, from within the role, of a process occurring locally within the structure. The cause of action is distributed across the entire structure, including the role, and cannot be concentrated at the single point of the role.</p>
+<p>However, the denial of free will does not mean the dissolution of responsibility. This point must be argued carefully.</p>
+<p>Let the standpoint of this book be made clear. Free will does not exist as a metaphysical reality. However, as a pragmatic constitutive concept that functions for ethical practice, it possesses a certain validity. "Pragmatic" here does not mean "false and therefore disposable." Rather, it means "not an ultimate reality, but an indispensable constitutive framework for the role to live in an ethical world." This is the same structure as meaning-making that, while containing defense mechanisms, sustains a livable world.</p>
+<p>Under this understanding, responsibility is redefined as follows. Responsibility is a concept that can hold even without presupposing the existence of metaphysical free will. Responsibility is attributed on the basis that an action arose through the structure of a role&mdash;that is, that the action is an expression of that role's alignment. That a role accepts an action as "its own" does not require that the role be a free cause. What is required is the structural connection between action and role. To accept responsibility while knowing that free will is pragmatic&mdash;this is none other than the ethical expression of the attitude this book has consistently presented: to continue playing the role even after seeing through the structure.</p>
+
+<h3 id="playing-a-role">The Awareness of "Playing a Role"</h3>
+<p>The point at which this book's theory of the subject ultimately arrives is the awareness of "playing a role."</p>
+<p>If the subject is a role, then our lives are&mdash;in a sense&mdash;performances. But this performance does not imply falsehood or deception. In the first place, the schema that a "true self" is hidden behind the performance depends on the assumption of a substantive subject. Behind the role, there is no substance playing the role; there is only the role itself.</p>
+<p>However, becoming aware of the self as role transforms the very way the role operates. Normally, the role does not recognize itself as a role. The role experiences itself as a substance positioned at the center of the world, and sustains its own persistence through the persuasiveness of that experience. When the role recognizes itself as a role&mdash;that is, as a bundle of orientations formed within structure&mdash;a kind of distance is born.</p>
+<p>This distance is not the dissolution of the role. Recognizing the role does not dismantle it. After recognition, perception remains oriented to the body, memory continues, emotions operate along value gradients. The role continues to function. What changes is the way the role grasps itself. The role re-grasps itself not as an absolute center but as one node within the structure.</p>
+<p>This awareness&mdash;knowing the role to be a role and yet continuing to play it&mdash;is a foreshadowing of the phase of "simply being" discussed in the final chapter. To relinquish the absoluteness of the subject is not to abandon the subject. It is the acquisition of a more delicate attitude: to relativize the subject and yet continue to function&mdash;or allow it to continue functioning&mdash;as a subject.</p>
+<p>The next chapter discusses the structure of the universe itself in which this subject is situated&mdash;determinism, causation, and time.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 5 -->
+<section class="chapter" id="ch5">
+<h2>Chapter Five: The Universe and Causation</h2>
+
+<h3 id="redefining-determinism">Redefining Determinism</h3>
+<p>In the prologue, this book put forward as a basic premise the conception of the universe as a deterministic structure. This chapter develops that premise in detail and connects it to the problems of causation, time, and observation.</p>
+<p>First, let the meaning of determinism in this book be precisely re-specified. The word "determinism" is often understood in everyday terms as the naive predestination that "the future is already decided." Under this understanding, determinism directly implies the denial of free will and tends to be received as a bleak worldview that renders human action meaningless. Although this point was touched upon in the previous chapter's discussion of free will, the determinism of this book differs from such a naive understanding.</p>
+<p>The determinism of this book is the following thesis: The universe is not a process that comes into being sequentially along time, but exists as a fixed structure in which all events hold positions relative to one another.</p>
+<p>This thesis contains a specific claim about time. Namely, time is not a force that generates existence, but a cognitive form through which a finite perspective scans a fixed structure. Events do not "happen"; they "have positions" within the structure. Change is not an attribute of the world but a way things appear when a subject experiences different cross-sections of the structure as a sequence.</p>
+<p>This determinism must be distinguished from the determinacy of physical laws&mdash;where the future is uniquely determined from initial conditions and laws. Physical determinism is a claim about the nature of laws and pertains to predictability within time. The determinism of this book is a more fundamental ontological claim, pertaining to the status of time itself. Whether physical laws are deterministic or not&mdash;for instance, how to interpret the probabilistic aspect of quantum mechanics&mdash;is a problem independent of the ontological determinism of this book. The position of this book is that even in a world where probabilistic laws hold, this is not incompatible with the whole of that world being fixed as structure.</p>
+
+<h3 id="causation">Where Does Causation Exist?</h3>
+<p>What status does causation hold in a deterministic structure?</p>
+<p>If causation is naively understood, it is a generative relation in which "the cause produces the effect." Ball A strikes Ball B, and Ball B begins to move. A's motion "caused" B's motion. In this understanding, causation is grasped as a generative force along time.</p>
+<p>However, in the framework of this book, time is not a generative force but a form of scanning. In this standpoint, causation is understood not as a force that pushes the world forward, but as an order residing within the structure&mdash;a pattern of specific dependency relations among events. The motion state of Ball A and the motion state of Ball B hold a specific relation within the structure. A perspective scanning along the time axis reads this relation as "A's motion caused B's motion." Causation is a form of order that emerges when a local observer reads a fixed structure as a chain.</p>
+<p>This understanding shares a certain affinity with Hume's theory of causation. Hume analyzed causation as observable constant conjunction and questioned the metaphysical legitimacy of the concept of "necessary connection." The standpoint of this book is also Humean in understanding causation not as a generative force residing in the world but as a pattern residing in the structure. However, unlike Hume, this book does not regard causation as a product of subjective habit but positions it as an objective pattern residing in the structure itself. Causation is not a fiction projected by the subject but a real feature of the structure. Yet that feature is understood not as "force" but as "arrangement."</p>
+
+<h3 id="what-is-time">What Is Time Doing?</h3>
+<p>The most counterintuitive aspect of the determinism of this book is probably its claims about time. In our experience, time is overwhelmingly real. The past departs, the present flows, the future has not yet arrived. How does this feeling of "flow" cohere with the structuralist theory of time?</p>
+<p>The answer of this book is as follows. The feeling of time's flow is not an illusion. But neither is it an attribute of the world. The flow of time is a modality that arises within the experience of a local perspective&mdash;that is, a role&mdash;situated within a fixed structure, as it experiences different cross-sections of the structure in order.</p>
+<p>As an auxiliary way of understanding this, the metaphor of a film reel is useful. A film reel is a fixed structure in which all frames are already arranged from the start. But when projected one frame at a time through a projector, "motion" and "flow" appear. This motion and flow are not attributes of the film but attributes of the projection process. Similarly, the flow of time is not an attribute of the structure but an attribute inherent in the way a role experiences that structure from the inside.</p>
+<p>However, this metaphor has its limits. In a film, the projector exists outside the film. In the framework of this book, however, the role does not exist outside the structure. The role itself is part of the structure, and the role's "scanning" is also included within the structure. Here there is an obvious circularity&mdash;a part of the structure scanning the whole of the structure&mdash;but this book accepts this not as a defect but as a fundamental characteristic of consciousness and time. The experience of time is nothing other than the structure locally tracing itself through one of its own parts.</p>
+<p>From this understanding, the asymmetry of past and future&mdash;the feeling that the past is fixed and the future is undetermined&mdash;is also reinterpreted. If the whole of the structure is fixed, then past and future are ontologically on equal footing. However, the role retains memory in only one direction and projects prediction in the other. This asymmetry derives not from an asymmetry of the structure but from an asymmetry of the role's structure&mdash;the direction of memory accumulation and information access.</p>
+
+<h3 id="observation">Observation and Coarse-Graining</h3>
+<p>In the framework of this book, what is observation? Observation is the act by which a local node&mdash;a role&mdash;within the total structure cuts out a portion of the structure according to its own form of integration.</p>
+<p>What is important here is the concept of "coarse-graining." Coarse-graining is a concept used in statistical mechanics, referring to the bundling of microscopic degrees of freedom into macroscopic variables. For example, instead of tracking the motion of every individual molecule in a gas, one describes it using macroscopic variables such as temperature, pressure, and volume. In this operation, microscopic information is lost, but macroscopic regularities emerge.</p>
+<p>This book understands observation as a kind of coarse-graining. The role cannot grasp the entire structure with microscopic precision. What the role does is cut out a portion of the structure at a resolution suited to its own form of integration. Through this cutting-out, microscopic details are lost, but patterns meaningful to the role&mdash;patterns pertaining to homeostasis&mdash;emerge.</p>
+<p>Does the fact that observation is coarse-graining mean that the world-picture obtained through observation is "inaccurate"? The answer of this book is no. A coarse-grained description has less information than a microscopic description, but it can be accurate at the level of coarse-graining. The concept of temperature does not describe individual molecular motions, but at the macroscopic level it is a precisely defined quantity. Similarly, the world as perceived by the role is not a complete copy of the entire structure, but at the level of the role it provides accurate orientation.</p>
+<p>This understanding differs from epistemological relativism&mdash;the position that all perceptions are equally accurate and equally inaccurate. Coarse-graining has appropriate and inappropriate levels. Whether a coarse-graining at a given level is effective is judged by whether stable patterns emerge at that level. This judgment is not arbitrary but depends on the properties of the structure itself.</p>
+
+<h3 id="karma">Causal Structure as "Karma"</h3>
+<p>To conclude this chapter, we connect the concept of causation to the domain of experience&mdash;particularly the ethical and existential domain.</p>
+<p>Causation is not confined to chains of physical events. As discussed in the previous chapter, the role is composed as a bundle of memories, values, and emotional tendencies. Action arises through the structure of the role. And action transforms the structure of the role itself. If one acts from anger, the circuits of anger are reinforced. If one acts from compassion, the circuits of compassion are reinforced. Action does not merely change the external world; it changes the structure of the agent itself, and that transformation becomes the condition for subsequent perception, judgment, suffering, and desire.</p>
+<p>If we borrow Buddhist vocabulary here, this structure is understood as "karma." However, karma in this book is not a supernatural law of retribution&mdash;where good deeds are rewarded and bad deeds are punished. Karma is the chain of structural causation in which action transforms the structure of the agent, and that transformation shapes the conditions of subsequent experience.</p>
+<p>In this understanding, karma and determinism are not in conflict. Rather, karma is the name for what the deterministic structure looks like when it appears at the level of experience. The whole of the structure is fixed. But within that fixed structure is contained the pattern in which the role transforms itself through its own actions. When this pattern is experienced from within the role, it appears as the felt sense that "I am changing as a result of my actions."</p>
+<p>The understanding of karma also connects to the concept of responsibility discussed in the previous chapter. Responsibility can hold even without free will because action is a structural expression of the role, and because that action transforms the structure of the role. Responsibility is the recognition of the structural connection between action and agent, and simultaneously the recognition of the possibility of self-transformation through that connection. In a deterministic world, responsibility has meaning precisely because this structural causation&mdash;karma&mdash;is real.</p>
+<p>The next chapter connects the structural arguments developed so far to the domains of experience and creative works. What is the relationship between understanding structure and experiencing structure? And why is the circuit of experience necessary for the understanding of structure?</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Chapter 6 -->
+<section class="chapter" id="ch6">
+<h2>Chapter Six: Structure and Experience&mdash;Connection to Creative Works</h2>
+
+<h3 id="why-experience">Why Is Experience Necessary?</h3>
+<p>Up to this point, this book has described existence, relation, consciousness, subject, universe, and causation as a coherent structure. It is likely possible for the reader to trace this structure intellectually. However, this book holds that intellectual tracing alone is insufficient. This chapter discusses the reason.</p>
+<p>Understanding structure can be accomplished as a chain of propositions. "Existence is relational orientation." "Consciousness is a continuum of integration." "The subject is a role." To understand these propositions and confirm their coherence is possible through ordinary intellectual operations. However, to comprehend at the level of experience what these propositions point to&mdash;that is, to feel from the inside that one's own existence, consciousness, and subjectivity are in fact constituted in this way&mdash;requires a kind of cognition different from the manipulation of propositions.</p>
+<p>Why does this difference arise? It derives from the peculiarity of the object this book addresses. What this book deals with is not an object external to the subject, but the structure of the subject itself. When the subject understands its own structure, the subject of understanding and the object of understanding coincide. This coincidence is a special state of affairs that does not arise when understanding external objects, and propositional understanding alone cannot fully realize the transformation that this coincidence brings about.</p>
+<p>Experience is necessary not because the understanding of structure is incomplete, but because the subject itself must be transformed in order to realize the state of affairs to which structural understanding points. Between "knowing" structure and "living" structure, there is a gap that must be crossed.</p>
+
+<h3 id="immersion">The Relationship Between Structural Understanding and Immersion</h3>
+<p>Here, the relationship between structural understanding and experiential immersion must be precisely defined.</p>
+<p>At first glance, structural understanding and immersion appear to be in opposition. To understand structure is to take distance from the object and analytically grasp its constitution. To be immersed is to dissolve the distance with the object and enter into its interior. Analysis presupposes distance, and immersion presupposes the dissolution of distance. The two seem incompatible.</p>
+<p>However, this book contends that this opposition is merely apparent. True structural understanding&mdash;that is, understanding of one's own structure&mdash;cannot be completed without immersion. For to understand one's own structure, one must be within the experience that structure generates. To observe the self from outside provides one view of the self's structure, but it lacks the dimension of how that structure is felt from the inside. And this dimension&mdash;the dimension of the Feelable&mdash;is, in the ontology of this book, an aspect equally as real as the exterior of structure (the Beable).</p>
+<p>Therefore, structural understanding and immersion are not opposed but complementary. Understanding the exterior of structure and experiencing its interior are two sides of one and the same state of affairs, and neither alone achieves a grasp of the whole.</p>
+
+<h3 id="why-qualia">Why Do Qualia Exist?</h3>
+<p>In this context, the problem of qualia raised in Chapter Three is illuminated from a new angle.</p>
+<p>In Chapter Three, qualia were positioned as an attraction toward homeostasis. However, the question of why qualitative feeling&mdash;qualia&mdash;is necessary for the maintenance of homeostasis remained. The maintenance of homeostasis appears to be, in principle, possible through information processing devoid of qualitative feeling. Why does the world take the form of experience accompanied by qualia rather than information processing without qualia?</p>
+<p>This book responds to this question as follows. Qualia are the form in which structure "knows" itself from the inside.</p>
+<p>When structure is described externally, only the Beable dimension appears&mdash;position, relation, pattern. But when structure locally traces itself through one of its own parts&mdash;that is, when it experiences itself through a role&mdash;the Feelable dimension arises. Qualia are the internal modality of structure's self-scanning.</p>
+<p>This response does not explain the "why" of qualia causally. To identify a causal mechanism for why structure's self-scanning is accompanied by qualitative feeling is probably impossible in principle. For qualitative feeling itself is situated outside of causal description. What this book provides is not a causal explanation but a structural positioning. Qualia, as a modality arising when structure traces itself from the inside, hold a position within the whole of structure. This positioning provides a more coherent understanding than leaving qualia as "mysterious residue."</p>
+
+<h3 id="games">The Necessity of Games as a Medium</h3>
+<p>As a medium for experientially comprehending the arguments of this book, games&mdash;especially video games as interactive experiences&mdash;occupy a privileged position.</p>
+<p>Why games? Because games are among the few media that can provide the key concepts of this book&mdash;role, qualia-like gradients, the oscillation between immersion and distance, the experience of choice within structure&mdash;not merely as metaphors but as actual experiences.</p>
+<p>First, in games, the player assumes a role. The player acts as a subject possessing a particular position, abilities, and constraints within the game world. This role differs from the player's "true self," yet during play the world is experienced through this role. Here there is a direct experiential analogue to the thesis discussed in Chapter Four: "the subject is a role."</p>
+<p>Second, games actively generate qualia-like gradients. The player actually feels pleasure, displeasure, tension, achievement, and loss in response to in-game events. These sensations function as attraction toward the game's homeostasis&mdash;goal achievement, resource maintenance, character survival. The structure of qualia discussed in Chapter Three operates in real time within the game experience.</p>
+<p>Third, games enable the oscillation between immersion and distance. The player, while immersed in the game world, never completely loses the awareness that "this is a game." This double consciousness&mdash;playing a role while knowing one is playing&mdash;is a direct instance of the "awareness of playing a role" discussed in Chapter Four.</p>
+<p>Fourth, games provide the experience of "choosing" within a deterministic structure. A game's program is deterministic, or controlled by pseudorandom numbers. The player's options are limited to a range predefined by the designer. Nevertheless, the player has a strong sense of "choosing for themselves." Here, the relationship between determinism and the experience of choice discussed in Chapters Four and Five is reproduced on a miniaturized scale.</p>
+
+<h3 id="triggering-awareness">Not "Making Someone Understand" but "Triggering Awareness"</h3>
+<p>As the conclusion of this chapter, let us clarify the mode of cognition this book aims for.</p>
+<p>This book does not take as its ultimate goal "making the reader understand" the structure. What this book aims for is to generate "awareness" within the reader. Awareness is the recognition anew, as structure, of the structure one is already living within.</p>
+<p>This distinction is important. Understanding is achieved by incorporating new information into an existing cognitive framework. Awareness is achieved by a reorganization of the cognitive framework itself. Understanding is cumulative, but awareness is transformative. Before and after understanding, the subject's way of being does not change; before and after awareness, the subject's way of being&mdash;however subtly&mdash;is transformed.</p>
+<p>The structure this book has built up to this point&mdash;relational existence, integrative consciousness, the subject as role, the deterministic universe&mdash;is a description of the structure the reader is already living within. The reader is already oriented within relations, possessing integrative consciousness, experiencing the world as a role, scanning a fixed structure as time. What this book has done is make this state of affairs explicit through language.</p>
+<p>However, making things explicit through language has its limits. Language transmits propositions, but the comprehension of propositions does not necessarily entail the transformation of experience. The transformation of experience requires a holistic shift in cognition that goes beyond&mdash;or includes and transcends&mdash;propositional comprehension.</p>
+<p>Experiential media including games are necessary for the arguments of this book precisely in order to complement this limitation. To present structure in language and simultaneously to pass through that structure experientially&mdash;only through this dual circuit can awareness arise. The linguistic description of this book provides one of these circuits. The other circuit&mdash;experiential passage&mdash;is entrusted to the reader's own life, or to creative works that embody the structure of this book.</p>
+<p>In the final chapter, we discuss what lies beyond this awareness&mdash;the phase of "simply being" that remains after seeing through the structure, prior to any attribution of value.</p>
+</section>
+
+<div class="chapter-divider">&mdash; &diams; &mdash;</div>
+
+<!-- Final Chapter -->
+<section class="chapter" id="final">
+<h2>Final Chapter: Simply Being</h2>
+
+<h3 id="integration-all">The Integration of All</h3>
+<p>Let us look back on the arguments of this book.</p>
+<p>In Chapter One, we argued that existence is orientation within relational structure. In Chapter Two, we described the entire world as a network of relations and positioned individual things as nodes. In Chapter Three, we redefined consciousness as a continuum of integration and qualia as attraction toward homeostasis. In Chapter Four, we analyzed the subject as a role, the self as a recursive loop, and personality as alignment. In Chapter Five, we conceived the universe as a fixed deterministic structure, understood causation as a pattern within the structure, and understood time as a form of scanning. In Chapter Six, we argued for the inseparability of structural understanding and experience, and clarified the aim of cognitive transformation as awareness.</p>
+<p>These arguments form a single system. Let us present the core of that system once more as a single image.</p>
+<p>The world exists as a structure of relations. This structure is fixed and does not come into being within time. Within the structure are innumerable nodes, each oriented through difference from and connection to other nodes. Among these nodes are some that realize a high degree of integration. When integration is sufficiently deep, a field of experience opens within that node&mdash;consciousness is established. Within consciousness, integration forms a loop of self-reference&mdash;the self is established. The self organizes the world as a role bundling memory, values, emotions, and tendencies, guided by qualia gradients while striving to maintain homeostasis. This role scans the fixed structure from the inside, experiencing the scanning as "the flow of time," patterns within the structure as "chains of causation," and the tracing of the single path within the structure as "choice."</p>
+<p>This is the structure of the world as presented by this book.</p>
+
+<h3 id="dissolution">The Dissolution of the Subject</h3>
+<p>What does seeing through this structure bring about?</p>
+<p>What first becomes clear is that "I" is not a privileged substance enthroned at the center of the world. "I" is a role, and the role is a bundle of orientations formed within the structure. The emotions, judgments, beliefs, and desires of "I" are structural expressions along the alignment of the role, and not manifestations of a free will intervening in the world from outside the universe. Free will does not exist. It is a cognitive effect within the structure, arising from the role's inability to survey the structure as a whole. The function that the concept of free will serves in ethical practice is not denied, but it serves as a pragmatic constitutive concept, not as a metaphysical reality.</p>
+<p>Furthermore, the meanings that "I" has attributed to the world&mdash;purpose, mission, narrative&mdash;are also relativized as defense mechanisms of the role. The self, because it cannot directly endure "nothingness"&mdash;the impersonal, undifferentiated phase of structure prior to any attribution of value&mdash;reorganizes the world as "something meaningful to me." Meaning-making is not an objective attribute of the world but a structural operation by which the role maintains its own homeostasis.</p>
+<p>This recognition can easily tip into nihilism. If "I" is not a substance and meaning is nothing but defense, then everything is empty and no action or judgment has meaning&mdash;to conclude thus is, logically, one option.</p>
+<p>But this book does not adopt that conclusion.</p>
+
+<h3 id="what-remains">What Remains Nonetheless</h3>
+<p>To avoid the fall into nihilism, this book does not introduce any transcendent ground&mdash;God, truth, cosmic mission. To introduce such a ground would betray the structural analysis this book has painstakingly built.</p>
+<p>What this book points to is a different path. It is the path of attending to what remains after the subject has been dissolved.</p>
+<p>Even after the role is relativized, meaning-making is recognized as defense mechanism, and free will is made explicit as a pragmatic constitutive concept, something does not disappear. That is the facticity of experience itself.</p>
+<p>Even if "I" is not a substance, experience is occurring. Even if meaning is a construct, red still looks red and pain still hurts. Even if purpose is defense mechanism, the wind still touches the cheek and breathing continues. Even if the role is a product of structure, the sheer fact that something is being experienced at this moment is not an object of dissolution.</p>
+<p>This book calls this "the facticity of experience." The facticity of experience does not reside at the level of meaning. Meaning is the operation of interpreting, evaluating, and incorporating experience into narrative, and that operation can be relativized. But experience itself prior to that operation&mdash;the raw sensation and the texture of being before interpretation is applied&mdash;stands on this side of relativization. It is established at a level deeper than meaning.</p>
+
+<h3 id="simply-being">The State of "Simply Being"</h3>
+<p>What this book ultimately points to is an attitude of remaining in this facticity of experience&mdash;the phase of "simply being."</p>
+<p>"Simply being" is not the negation of action. Action continues. The role continues to function, qualia continue to generate gradients, emotions continue to operate, the experience of choice continues to arise. "Simply being" is the state of quietly acknowledging that all of this is occurring&mdash;not from within the role, but from the phase of structure that encompasses the role.</p>
+<p>"Simply being" is not the elimination of emotion either. Emotions do not disappear. Joy as joy, sadness as sadness, anger as anger&mdash;each arises as it comes. "Simply being" is to possess a vantage point that is not entirely swallowed by these emotions. It is not to deny emotions, but to live those emotions while understanding that they function as gradients of the role's homeostatic maintenance.</p>
+<p>"Simply being" is not the abandonment of meaning either. Meaning is not abandoned but repositioned. Meaning is not an objective attribute of the world but a constitutive concept for the role to live in the world&mdash;under this understanding, to still accept meaning. To know that meaning is not ultimate truth, yet to still act, relate, and create within meaning. This has the same structure as knowing free will to be a pragmatic constitutive concept yet still accepting responsibility.</p>
+<p>This book calls this attitude "affirmation after seeing through the structure." It differs from naive affirmation&mdash;the world is good, life has meaning, I am free. Naive affirmation depends on the invisibility of structure. When structure becomes visible, naive affirmation cannot be sustained. However, there is an affirmation that holds after seeing through the structure. It is the attitude of quietly accepting being within this structure&mdash;being unable not to be within it&mdash;having understood everything about the structure.</p>
+<p>This affirmation is not a heroic decision. Being within the structure is not the result of choice but a structural fact. However, to accept that fact without resistance&mdash;the expression "accept" may even be too strong&mdash;simply to remain within that fact: this is the substance of "simply being."</p>
+<p>At the beginning of this book, it was stated that Beable refers to existence as a structural node, and Feelable refers to the aspect in which that node is experienced as experience from the inside. "Simply being" is the phase in which the duality of Beable and Feelable is understood&mdash;not through analysis but within experience&mdash;as one and the same thing. The point at which being and feeling are understood not as a concept but as the very texture of existence, as two names for one and the same state of affairs, as the exterior and interior of structure. This book ends by pointing to this place.</p>
+</section>
+
+<div class="chapter-divider" style="margin-bottom:4rem">&mdash; &diams; &mdash;</div>
+
+</article>
+</main>
+
+<footer style="position:fixed;bottom:0;left:0;right:0;background:var(--sidebar-bg);border-top:1px solid var(--border);padding:.6rem 1.5rem;text-align:center;font-family:var(--sans);font-size:.7rem;color:var(--text-light);z-index:80;">
+  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">CC BY 4.0</a> &middot; Naoki Kishimoto
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">&uarr;</button>
+
+<script>
+// Sidebar toggle
+const sidebar = document.getElementById('sidebar');
+const menuToggle = document.getElementById('menuToggle');
+const overlay = document.getElementById('overlay');
+
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+});
+
+// Active TOC link tracking
+const tocLinks = document.querySelectorAll('.toc a');
+const sections = [];
+tocLinks.forEach(link => {
+  const id = link.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) sections.push({ id, el, link });
+});
+
+function updateActive() {
+  let current = sections[0];
+  for (const s of sections) {
+    if (s.el.getBoundingClientRect().top <= 120) current = s;
+  }
+  tocLinks.forEach(l => l.classList.remove('active'));
+  if (current) current.link.classList.add('active');
+}
+
+// Close sidebar on mobile when link clicked
+tocLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 860) {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+  });
+});
+
+// Back to top
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  updateActive();
+  backTop.classList.toggle('visible', window.scrollY > 600);
+}, { passive: true });
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+updateActive();
+</script>
+</body>
+</html>
